@@ -43,5 +43,16 @@ module.exports = function(quack){
                 quack('string', value).should.equal(false);
             });
         });
+
+        it('should pass for valid numbers', function(){
+            quack('number', types.aNumber).should.equal(true);
+            quack('number', types.notANumber).should.equal(true);
+        });
+
+        it('should fail for invalid numbers', function(){
+            testAllExcept('number', function(value){
+                quack('number', value).should.equal(false);
+            });
+        });
     });
 };
