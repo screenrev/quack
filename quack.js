@@ -17,21 +17,47 @@ void (function(root, undefined){
         @param {arguments|array|string} args: array-like arguments (or array of arguments) to check
         @returns {boolean} true if the arguments match the signature
     */
-    var quack = function quack(args, signature){
-        // convert strings to arrays
-        if (typeof signature === 'string') signature = [signature];
-        if (typeof args === 'string') args = [args];
+    var quack = function quack(signature, args){
+        // convert signature to an array
+        if (typeof signature == 'string') {
+            // trim whitespace and split on commas (with or without spaces)
+            signature = signature.replace(/^\s*|\s*$/g, '').split(/\s*,\s*/);
+        }
 
-        args = [].slice.apply(args);
+        // convert array-like "arguments" to an array
+        if (isArguments(args)) args = [].slice.apply(args);
+        // convert a single arg to an array
+        else if (! isArray(args)) args = [args];
 
+        // iterate over the signature, matching types against arguments
         for (var i = 0, max = signature.length; i < max; i++) {
-            if (typeof signature[i] !== args[i].toLowerCase()) return false;
+            var sig = signature[i].toLowerCase();
+            var arg = args[i];
+
+            if (sig !== typeof arg) return false;
         }
 
         return true;
     };
 
-    // module definitions
+
+    /*
+        Type checking
+    */
+
+    function isArray(value){
+      return value ? (typeof value == 'object' && toString.call(value) == '[object Array]') : false;
+    }
+
+    function isArguments(value){
+        return toString.call(value) == '[object Arguments]';
+    }
+
+
+    /*
+        module definitions
+    */
+
     if (exports) module.exports = quack; // NodeJS
     else if (define && define.amd) define(quack); // AMD
     else root.quack = quack; // root = window
