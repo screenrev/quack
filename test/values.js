@@ -12,6 +12,7 @@ var types = {
     anNumObject: new Number(),
     anArray: [undefined, 'one', 2],
     anEmptyArray: [],
+    anArgsObject: (function(){return arguments;})('one', 2),
     aFunction: function(){},
     aDate: new Date(),
     aRegex: / /i,
@@ -83,6 +84,17 @@ module.exports = function(quack){
         it('should fail for invalid objects', function(){
             testAllExcept(['object', 'date', 'array', 'function', 'regex'], function(value){
                 quack('object', [value]).should.equal(false);
+            });
+        });
+
+        it('should pass for valid arrays', function(){
+            quack('array', [types.anArray]).should.equal(true);
+            quack('array', [types.anEmptyArray]).should.equal(true);
+        });
+
+        it('should fail for invalid arrays', function(){
+            testAllExcept('array', function(value){
+                quack('array', [value]).should.equal(false);
             });
         });
     });

@@ -33,6 +33,7 @@ void (function(root, undefined){
             var arg = args[i];
 
             if (sig == 'object') return isObject(arg);
+            else if (sig == 'array') return isArray(arg);
             else if (sig !== typeof arg) return false;
         }
 
