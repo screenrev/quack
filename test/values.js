@@ -54,5 +54,16 @@ module.exports = function(quack){
                 quack('number', value).should.equal(false);
             });
         });
+
+        it('should pass for valid booleans', function(){
+            quack('boolean', types.aBoolean).should.equal(true);
+            quack('boolean', types.aFalseBoolean).should.equal(true);
+        });
+
+        it('should fail for invalid booleans', function(){
+            testAllExcept('boolean', function(value){
+                quack('boolean', value).should.equal(false);
+            });
+        });
     });
 };
