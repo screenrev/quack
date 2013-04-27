@@ -10,8 +10,12 @@ void (function(root, undefined){
 
     /*
         check the arguments against the expected signature
-        @param {arguments|array|string} args: array-like arguments (or array of arguments) to check
+
+            quack('string, number, array', 'one', 2, [3]); // true
+
         @param {string|string[]} signature: string (for one), or array of strings to check against
+        @param {arguments|array|string} args: array-like arguments (or array of arguments) to check
+        @returns {boolean} true if the arguments match the signature
     */
     var quack = function quack(args, signature){
         // convert strings to arrays
