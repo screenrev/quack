@@ -1,12 +1,12 @@
 {
   "name": "quack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Check the values of passed arguments in a function - see if they quack like a duck.",
   "main": "quack.js",
   "scripts": {
-    "test": "mocha should -w -G -r should test/unminified-test.js",
-    "test-min": "npm run build; mocha test/minified-test.js",
-    "prepublish": "npm test-min",
+    "test": "mocha -w -G -r should test/unminified-test.js",
+    "test-min": "npm run build; mocha -r should test/minified-test.js",
+    "prepublish": "npm run test-min",
     "build": "./node_modules/uglify-js/bin/uglifyjs quack.js -m -o quack.min.js"
   },
   "repository": {
