@@ -18,10 +18,6 @@ module.exports = function(quack){
             quack(' string , number , string ', [' ', 2, ' ']).should.be.equal(true);
         });
 
-        it('should take a single non-array arg', function(){
-            quack('number', 1).should.be.equal(true);
-        });
-
         it('should take an "arguments" object', function(){
             (function(){
                 quack('string, number', arguments).should.be.equal(true);

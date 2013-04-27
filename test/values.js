@@ -8,9 +8,11 @@ var types = {
     aFalseBoolean: false,
     anObject: {foo: 'bar'},
     anEmptyObject: {},
+    anStrObject: new String(),
+    anNumObject: new Number(),
     anArray: [undefined, 'one', 2],
-    aFunction: function(){},
     anEmptyArray: [],
+    aFunction: function(){},
     aDate: new Date(),
     aRegex: / /i,
     aNull: null,
@@ -34,35 +36,53 @@ module.exports = function(quack){
         };
 
         it('should pass for valid strings', function(){
-            quack('string', types.aString).should.equal(true);
-            quack('string', types.anEmptyString).should.equal(true);
+            quack('string', [types.aString]).should.equal(true);
+            quack('string', [types.anEmptyString]).should.equal(true);
         });
 
         it('should fail for invalid strings', function(){
             testAllExcept('string', function(value){
-                quack('string', value).should.equal(false);
+                quack('string', [value]).should.equal(false);
             });
         });
 
         it('should pass for valid numbers', function(){
-            quack('number', types.aNumber).should.equal(true);
-            quack('number', types.notANumber).should.equal(true);
+            quack('number', [types.aNumber]).should.equal(true);
+            quack('number', [types.notANumber]).should.equal(true);
         });
 
         it('should fail for invalid numbers', function(){
             testAllExcept('number', function(value){
-                quack('number', value).should.equal(false);
+                quack('number', [value]).should.equal(false);
             });
         });
 
         it('should pass for valid booleans', function(){
-            quack('boolean', types.aBoolean).should.equal(true);
-            quack('boolean', types.aFalseBoolean).should.equal(true);
+            quack('boolean', [types.aBoolean]).should.equal(true);
+            quack('boolean', [types.aFalseBoolean]).should.equal(true);
         });
 
         it('should fail for invalid booleans', function(){
             testAllExcept('boolean', function(value){
-                quack('boolean', value).should.equal(false);
+                quack('boolean', [value]).should.equal(false);
+            });
+        });
+
+        it('should pass for valid objects', function(){
+            quack('object', [types.anObject]).should.equal(true);
+            quack('object', [types.anEmptyObject]).should.equal(true);
+            quack('object', [types.anStrObject]).should.equal(true);
+            quack('object', [types.anNumObject]).should.equal(true);
+            quack('object', [types.aDate]).should.equal(true);
+            quack('object', [types.anArray]).should.equal(true);
+            quack('object', [types.anEmptyArray]).should.equal(true);
+            quack('object', [types.aFunction]).should.equal(true);
+            quack('object', [types.aRegex]).should.equal(true);
+        });
+
+        it('should fail for invalid objects', function(){
+            testAllExcept(['object', 'date', 'array', 'function', 'regex'], function(value){
+                quack('object', [value]).should.equal(false);
             });
         });
     });
