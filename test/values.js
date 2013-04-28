@@ -107,5 +107,15 @@ module.exports = function(quack){
                 quack('function', [value]).should.equal(false);
             });
         });
+
+        it('should pass for valid dates', function(){
+            quack('date', [types.aDate]).should.equal(true);
+        });
+
+        it('should fail for invalid dates', function(){
+            testAllExcept('date', function(value){
+                quack('date', [value]).should.equal(false);
+            });
+        });
     });
 };

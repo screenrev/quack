@@ -84,6 +84,7 @@ coolFunction('my string', 123); // true
     including `array`, `function`, `object`, `regex`, `new Number(0)`, and `new String('')`
 - **array**: `array` (not including `arguments` object)
 - **function**: `function`
+- **date**: `date` object
 
 
 ## road map

@@ -44,6 +44,9 @@ void (function(root, undefined){
             else if (sig == 'function') {
                 if (! isFunction(arg)) return false;
             }
+            else if (sig == 'date') {
+                if (! isDate(arg)) return false;
+            }
             else if (sig !== typeof arg) return false;
         }
 
@@ -83,6 +86,10 @@ void (function(root, undefined){
         isFunction = function(value){
             return typeof value == 'function' && toString.call(value) == '[object Function]';
         };
+    }
+
+    function isDate(value){
+        return value ? (typeof value == 'object' && toString.call(value) == '[object Date]') : false;
     }
 
 
