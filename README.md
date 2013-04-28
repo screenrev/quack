@@ -20,6 +20,39 @@ coolFunction('one', ['two'], {three: 3}, 4); // logs: "is a duck", tick
 ```
 
 
+## installation
+
+### NodeJS
+
+```bash
+npm install quack
+```
+
+```javascript
+var quack = require('quack');
+```
+
+
+### Browser
+
+Download `quack.js`, `quack.min.js`, and `quack.js.src`, and add them to your project.
+
+
+**RequireJS** (AMD)
+
+```javascript
+require(['path/to/quack'], function(quack){
+    // use quack here
+});
+```
+
+**Standard**
+
+```html
+<script src="path/to/quack.min.js"></script>
+```
+
+
 ## usage
 
 `quack` takes two arguments, and returns a `boolean` (`true` if it validates)
