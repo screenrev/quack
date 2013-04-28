@@ -32,8 +32,12 @@ void (function(root, undefined){
             var sig = signature[i].toLowerCase();
             var arg = args[i];
 
-            if (sig == 'object') return isObject(arg);
-            else if (sig == 'array') return isArray(arg);
+            if (sig == 'object') {
+                if (! isObject(arg)) return false;
+            }
+            else if (sig == 'array') {
+                if (! isArray(arg)) return false;
+            }
             else if (sig !== typeof arg) return false;
         }
 

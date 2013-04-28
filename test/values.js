@@ -22,7 +22,7 @@ var types = {
 
 // quack is passed in, minified or unminified
 module.exports = function(quack){
-    describe('quack', function(){
+    describe('quack values', function(){
 
         // test common types, minus exceptions
         var testAllExcept = function(except, fun){

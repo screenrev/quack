@@ -1,6 +1,6 @@
 // quack is passed in, minified or unminified
 module.exports = function(quack){
-    describe('quack', function(){
+    describe('quack signature and arguments', function(){
 
         it('should take arrays for the signature and args', function(){
             quack(['string', 'number'], ['one', 2]).should.equal(true);
@@ -30,6 +30,10 @@ module.exports = function(quack){
 
         it('should fail for more signature values than args', function(){
             quack('string, number, string', ['one', 2]).should.be.equal(false);
+        });
+
+        it('should fail tests after an "isSomething" test fail', function(){
+            quack('object, array', [[]]).should.be.equal(false);
         });
     });
 };
