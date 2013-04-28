@@ -2,6 +2,7 @@
     quack.js
     Check the values of passed arguments in a function - see if they quack like a duck.
     https://github.com/screenRev/quack
+    borrowed some type checking from https://github.com/bestiejs/lodash
 */
 
 void (function(root, undefined){
@@ -18,6 +19,8 @@ void (function(root, undefined){
         @returns {boolean} true if the arguments match the signature
     */
     var quack = function quack(signature, args){
+        var i, max, sig, arg;
+
         // convert array-like "arguments" to an array
         if (isArguments(args)) args = [].slice.apply(args);
 
@@ -28,9 +31,9 @@ void (function(root, undefined){
         }
 
         // iterate over the signature, matching types against arguments
-        for (var i = 0, max = signature.length; i < max; i++) {
-            var sig = signature[i].toLowerCase();
-            var arg = args[i];
+        for (i = 0, max = signature.length; i < max; i++) {
+            sig = signature[i].toLowerCase();
+            arg = args[i];
 
             if (sig == 'object') {
                 if (! isObject(arg)) return false;
@@ -64,6 +67,17 @@ void (function(root, undefined){
 
     function isArray(value){
       return value ? (typeof value == 'object' && toString.call(value) == '[object Array]') : false;
+    }
+
+    function isFunction(value){
+        return typeof value == 'function';
+    }
+
+    // fallback for older versions of Chrome and Safari
+    if (isFunction(/x/)) {
+        isFunction = function(value){
+            return typeof value == 'function' && Object.toString.call(value) == '[object Function]';
+        };
     }
 
 

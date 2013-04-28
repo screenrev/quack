@@ -97,5 +97,15 @@ module.exports = function(quack){
                 quack('array', [value]).should.equal(false);
             });
         });
+
+        it('should pass for valid functions', function(){
+            quack('function', [types.aFunction]).should.equal(true);
+        });
+
+        it('should fail for invalid functions', function(){
+            testAllExcept('function', function(value){
+                quack('function', [value]).should.equal(false);
+            });
+        });
     });
 };

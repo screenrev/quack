@@ -83,6 +83,7 @@ coolFunction('my string', 123); // true
 - **object**: ECMAScript `object`,
     including `array`, `function`, `object`, `regex`, `new Number(0)`, and `new String('')`
 - **array**: `array` (not including `arguments` object)
+- **function**: `function`
 
 
 ## road map
@@ -92,9 +93,9 @@ coolFunction('my string', 123); // true
 - 0.3: shorthand
     eg. `'"", {}, [], 1'` short for `'string, object, array, number'`
 - 0.4: `options`: a third argument
-    - *throws* `boolean`: throw and error if validation fails
-    - *console* `boolean`: log to the console if validation fails
-    - *message* `string`: a specific message for logged/thrown errors
+    - **throws** `boolean`: throw and error if validation fails
+    - **console** `boolean`: log to the console if validation fails
+    - **message** `string`: a specific message for logged/thrown errors
 - 0.5: types of `arrays` & `object` properties
     - `'string[]'`: an `array` of `strings`
     - `'[string, number]'`: specific types within an `array`
