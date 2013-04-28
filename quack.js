@@ -41,6 +41,9 @@ void (function(root, undefined){
             else if (sig == 'array') {
                 if (! isArray(arg)) return false;
             }
+            else if (sig == 'function') {
+                if (! isFunction(arg)) return false;
+            }
             else if (sig !== typeof arg) return false;
         }
 
@@ -51,6 +54,8 @@ void (function(root, undefined){
     /*
         Type checking
     */
+
+    var toString = Object().toString;
 
     var objectTypes = {
         'function': true,
@@ -76,7 +81,7 @@ void (function(root, undefined){
     // fallback for older versions of Chrome and Safari
     if (isFunction(/x/)) {
         isFunction = function(value){
-            return typeof value == 'function' && Object.toString.call(value) == '[object Function]';
+            return typeof value == 'function' && toString.call(value) == '[object Function]';
         };
     }
 
