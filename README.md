@@ -91,8 +91,8 @@ coolFunction('my string', 123); // true
 
 ## road map
 
-- 0.1: initial release, with `string`, `number`, `object`, & `array` (with tests)
-- 0.2: add `function`, `date`, `regexp`, `arguments`, `simpleObject`
+- 0.1: **DONE** initial release, with `string`, `number`, `object`, & `array` (with tests)
+- 0.2: **DONE** add `function`, `date`, `regexp`, `arguments`
 - 0.3: shorthand
     eg. `'"", {}, [], 1'` short for `'string, object, array, number'`
 - 0.4: `options`: a third argument
