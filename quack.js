@@ -47,6 +47,9 @@ void (function(root, undefined){
             else if (sig == 'date') {
                 if (! isDate(arg)) return false;
             }
+            else if (sig == 'regexp') {
+                if (! isRegExp(arg)) return false;
+            }
             else if (sig !== typeof arg) return false;
         }
 
@@ -92,6 +95,9 @@ void (function(root, undefined){
         return value ? (typeof value == 'object' && toString.call(value) == '[object Date]') : false;
     }
 
+    function isRegExp(value) {
+        return value ? (typeof value == 'object' && toString.call(value) == '[object RegExp]') : false;
+    }
 
     /*
         module definitions

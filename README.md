@@ -77,20 +77,21 @@ coolFunction('my string', 123); // true
 
 ## validation types
 
-- **string**: `string` (primitive)
-- **number**: `number` (primitive)
-- **boolean**: `boolean` (primitive)
-- **object**: ECMAScript `object`,
-    including `array`, `function`, `object`, `regex`, `new Number(0)`, and `new String('')`
-- **array**: `array` (not including `arguments` object)
-- **function**: `function`
-- **date**: `date` object
+- **string**: `String` (primitive)
+- **number**: `Number` (primitive)
+- **boolean**: `Boolean` (primitive)
+- **object**: ECMAScript `Object`,
+    including `Array`, `Function`, `Object`, `RegExp`, `new Number(0)`, and `new String('')`
+- **array**: `Array` (not including `arguments` object)
+- **function**: `Function`
+- **date**: `Date` object
+- **regexp**: `RegExp` object
 
 
 ## road map
 
 - 0.1: initial release, with `string`, `number`, `object`, & `array` (with tests)
-- 0.2: add `function`, `date`, `regex`, `arguments`, `simpleObject`
+- 0.2: add `function`, `date`, `regexp`, `arguments`, `simpleObject`
 - 0.3: shorthand
     eg. `'"", {}, [], 1'` short for `'string, object, array, number'`
 - 0.4: `options`: a third argument

@@ -15,7 +15,7 @@ var types = {
     anArgsObject: (function(){return arguments;})('one', 2),
     aFunction: function(){},
     aDate: new Date(),
-    aRegex: / /i,
+    aRegExp: / /i,
     aNull: null,
     anUndefined: void 0
 };
@@ -78,11 +78,11 @@ module.exports = function(quack){
             quack('object', [types.anArray]).should.equal(true);
             quack('object', [types.anEmptyArray]).should.equal(true);
             quack('object', [types.aFunction]).should.equal(true);
-            quack('object', [types.aRegex]).should.equal(true);
+            quack('object', [types.aRegExp]).should.equal(true);
         });
 
         it('should fail for invalid objects', function(){
-            testAllExcept(['object', 'date', 'array', 'function', 'regex'], function(value){
+            testAllExcept(['object', 'date', 'array', 'function', 'regexp'], function(value){
                 quack('object', [value]).should.equal(false);
             });
         });
@@ -115,6 +115,16 @@ module.exports = function(quack){
         it('should fail for invalid dates', function(){
             testAllExcept('date', function(value){
                 quack('date', [value]).should.equal(false);
+            });
+        });
+
+        it('should pass for valid regular expressions', function(){
+            quack('regexp', [types.aRegExp]).should.equal(true);
+        });
+
+        it('should fail for invalid regular expressions', function(){
+            testAllExcept('regexp', function(value){
+                quack('regexp', [value]).should.equal(false);
             });
         });
     });
