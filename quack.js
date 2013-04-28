@@ -50,6 +50,9 @@ void (function(root, undefined){
             else if (sig == 'regexp') {
                 if (! isRegExp(arg)) return false;
             }
+            else if (sig == 'arguments') {
+                if (! isArguments(arg)) return false;
+            }
             else if (sig !== typeof arg) return false;
         }
 
@@ -70,6 +73,13 @@ void (function(root, undefined){
 
     function isArguments(value){
         return toString.call(value) == '[object Arguments]';
+    }
+
+    // fallback for browsers that can't detect `arguments` objects by [[Class]]
+    if (! isArguments(arguments)) {
+        isArguments = function(value) {
+            return value ? Object().hasOwnProperty.call(value, 'callee') : false;
+        };
     }
 
     function isObject(value) {

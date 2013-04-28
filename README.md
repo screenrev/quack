@@ -86,6 +86,7 @@ coolFunction('my string', 123); // true
 - **function**: `Function`
 - **date**: `Date` object
 - **regexp**: `RegExp` object
+- **arguments**: `arguments` object
 
 
 ## road map

@@ -127,5 +127,15 @@ module.exports = function(quack){
                 quack('regexp', [value]).should.equal(false);
             });
         });
+
+        it('should pass for valid arguments objects', function(){
+            quack('arguments', [types.anArgsObject]).should.equal(true);
+        });
+
+        it('should fail for invalid arguments objects', function(){
+            testAllExcept('arguments', function(value){
+                quack('args', [value]).should.equal(false);
+            });
+        });
     });
 };
