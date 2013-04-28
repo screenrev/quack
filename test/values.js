@@ -24,7 +24,7 @@ var types = {
 module.exports = function(quack){
     describe('quack', function(){
 
-        // test common types, apart from exeptions
+        // test common types, minus exceptions
         var testAllExcept = function(except, fun){
             if (typeof except == 'string') except = [except];
 
