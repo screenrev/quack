@@ -7,7 +7,7 @@
     "test": "mocha -w -G -r should test/unminified-test.js",
     "test-min": "npm run build; mocha -r should test/minified-test.js",
     "prepublish": "npm run test-min && git diff --exit-code",
-    "build": "./node_modules/uglify-js/bin/uglifyjs quack.js -m -o quack.min.js"
+    "build": "./node_modules/uglify-js/bin/uglifyjs quack.js -m -o quack.min.js --source-map quack.js.src"
   },
   "repository": {
     "type": "git",
