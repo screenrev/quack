@@ -1,7 +1,4 @@
-// common types
-var types = {
-    aString: 'a string'
-};
+var types = require('./types');
 
 // quack is passed in, minified or unminified
 module.exports = function(quack){
@@ -11,5 +8,8 @@ module.exports = function(quack){
             quack('""', [types.aString]).should.equal(true);
         });
 
+        it('should use shorthand for arrays', function(){
+            quack('[]', [types.anArray]).should.equal(true);
+        });
     });
 };

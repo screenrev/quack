@@ -71,7 +71,8 @@ void(function(root, undefined) {
         'object': true
     };
     var shorthand = {
-        '""': 'string'
+        '""': 'string',
+        '[]': 'array'
     };
 
     var isArguments = function(value) {
