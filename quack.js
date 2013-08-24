@@ -33,6 +33,7 @@ void(function(root, undefined) {
         // iterate over the signature, matching types against arguments
         for (i = 0, max = signature.length; i < max; i++) {
             sig = signature[i].toLowerCase();
+            sig = shorthand[sig] || sig; // test for shorthand methods
             arg = args[i];
 
             if (sig == 'object') {
@@ -65,10 +66,12 @@ void(function(root, undefined) {
     */
 
     var toString = {}.toString;
-
     var objectTypes = {
         'function': true,
         'object': true
+    };
+    var shorthand = {
+        '""': 'string'
     };
 
     var isArguments = function(value) {
