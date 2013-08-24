@@ -93,14 +93,15 @@ coolFunction('my string', 123); // true
 
 - 0.1: **DONE** initial release, with `string`, `number`, `object`, & `array` (with tests)
 - 0.2: **DONE** add `function`, `date`, `regexp`, `arguments`
-- 0.3: shorthand
-    eg. `'"", {}, [], 1'` short for `'string, object, array, number'`
+- 0.3: **DONE** shorthand
+    eg. `'"", [], 1'` short for `'string, array, number'`
 - 0.4: `options`: a third argument
-    - **throws** `boolean`: throw and error if validation fails
+    - **throws** `boolean`: throw an error if validation fails
     - **console** `boolean`: log to the console if validation fails
     - **message** `string`: a specific message for logged/thrown errors
 - 0.5: types of `arrays` & `object` properties
-    - `'string[]'`: an `array` of `strings`
+    - `'[]string'`: an `array` of `strings`
     - `'[string, number]'`: specific types within an `array`
-    - `'string{}'`: and `object` with only `string` properties
+    - `'{}string'`: an `object` with only `string` properties
     - `'{val1: string, val2: number}'`: specific `object` property names and types
+- 0.6: **plain object** type, with `'{}'` shorthand
