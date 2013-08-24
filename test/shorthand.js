@@ -11,5 +11,10 @@ module.exports = function(quack){
         it('should use shorthand for arrays', function(){
             quack('[]', [types.anArray]).should.equal(true);
         });
+
+        it('should use shorthand for numbers', function(){
+            quack('1', [types.aNumber]).should.equal(true);
+        });
+
     });
 };

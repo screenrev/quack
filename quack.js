@@ -72,6 +72,7 @@ void(function(root, undefined) {
     };
     var shorthand = {
         '""': 'string',
+        '1': 'number',
         '[]': 'array'
     };
 
