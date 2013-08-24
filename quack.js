@@ -5,7 +5,7 @@
     borrowed some type checking from https://github.com/bestiejs/lodash
 */
 
-void (function(root, undefined){
+void(function(root, undefined) {
 
     'use strict';
 
@@ -18,7 +18,7 @@ void (function(root, undefined){
         @param {arguments|array|string} args: array-like arguments (or array of arguments) to check
         @returns {boolean} true if the arguments match the signature
     */
-    var quack = function quack(signature, args){
+    var quack = function quack(signature, args) {
         var i, max, sig, arg;
 
         // convert array-like "arguments" to an array
@@ -64,50 +64,48 @@ void (function(root, undefined){
         Type checking
     */
 
-    var toString = Object().toString;
+    var toString = {}.toString;
 
     var objectTypes = {
         'function': true,
         'object': true
     };
 
-    function isArguments(value){
+    var isArguments = function(value) {
         return toString.call(value) == '[object Arguments]';
-    }
+    };
 
     // fallback for browsers that can't detect `arguments` objects by [[Class]]
-    if (! isArguments(arguments)) {
-        isArguments = function(value) {
-            return value ? Object().hasOwnProperty.call(value, 'callee') : false;
-        };
-    }
+    if (! isArguments(arguments)) isArguments = isArgumentsFallback;
+    var isArgumentsFallback = function(value) {
+        return value ? {}.hasOwnProperty.call(value, 'callee') : false;
+    };
 
-    function isObject(value) {
+    var isObject = function(value) {
           return value ? !! objectTypes[typeof value] : false;
-    }
+    };
 
-    function isArray(value){
+    var isArray = function(value) {
       return value ? (typeof value == 'object' && toString.call(value) == '[object Array]') : false;
-    }
+    };
 
-    function isFunction(value){
+    var isFunction = function(value) {
         return typeof value == 'function';
-    }
+    };
 
     // fallback for older versions of Chrome and Safari
-    if (isFunction(/x/)) {
-        isFunction = function(value){
-            return typeof value == 'function' && toString.call(value) == '[object Function]';
-        };
-    }
+    var isFunctionFallback = function(value) {
+        return typeof value == 'function' && toString.call(value) == '[object Function]';
+    };
+    if (isFunction(/x/)) isFunction = isFunctionFallback;
 
-    function isDate(value){
+    var isDate = function(value) {
         return value ? (typeof value == 'object' && toString.call(value) == '[object Date]') : false;
-    }
+    };
 
-    function isRegExp(value) {
+    var isRegExp = function(value) {
         return value ? (typeof value == 'object' && toString.call(value) == '[object RegExp]') : false;
-    }
+    };
 
     /*
         module definitions
