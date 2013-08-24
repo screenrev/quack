@@ -8,8 +8,8 @@ var types = {
     aFalseBoolean: false,
     anObject: {foo: 'bar'},
     anEmptyObject: {},
-    anStrObject: new String(),
-    anNumObject: new Number(),
+    aStrObject: new String(),
+    aNumObject: new Number(),
     anArray: [undefined, 'one', 2],
     anEmptyArray: [],
     anArgsObject: (function(){return arguments;})('one', 2),
@@ -72,8 +72,8 @@ module.exports = function(quack){
         it('should pass for valid objects', function(){
             quack('object', [types.anObject]).should.equal(true);
             quack('object', [types.anEmptyObject]).should.equal(true);
-            quack('object', [types.anStrObject]).should.equal(true);
-            quack('object', [types.anNumObject]).should.equal(true);
+            quack('object', [types.aStrObject]).should.equal(true);
+            quack('object', [types.aNumObject]).should.equal(true);
             quack('object', [types.aDate]).should.equal(true);
             quack('object', [types.anArray]).should.equal(true);
             quack('object', [types.anEmptyArray]).should.equal(true);
